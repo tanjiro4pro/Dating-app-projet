@@ -1,345 +1,715 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Find Love Near You</title>
-  <link rel="icon" href="https://i.postimg.cc/qRCzH9g4/XIvbnasc.jpg" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woriu Dating | Modern Dating Advice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF4E79;
+            --secondary: #6A45D8;
+            --accent: #FFB347;
+            --dark: #2D3047;
+            --light: #F9F9F9;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      overflow-x: hidden;
-      height: 100vh;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      padding: 1em;
-      text-align: center;
-      position: relative;
-      z-index: 999;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .hamburger {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      font-size: 1.8em;
-      cursor: pointer;
-      z-index: 1002;
-    }
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 300px;
-      height: 100vh;
-      background: #1e1e2f;
-      color: #fff;
-      padding: 2em 1.5em;
-      box-shadow: -5px 0 10px rgba(0,0,0,0.3);
-      transition: right 0.3s ease-in-out;
-      z-index: 1001;
-    }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
 
-    .side-menu.open {
-      right: 0;
-    }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5em;
-      cursor: pointer;
-      color: #e91e63;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
 
-    .side-menu h3 {
-      color: #e91e63;
-      margin-top: 30px;
-      margin-bottom: 1em;
-      font-size: 1.4em;
-    }
+        .logo i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
 
-    .side-menu label {
-      display: block;
-      margin: 1em 0 0.3em;
-      font-size: 0.9em;
-    }
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            transition: transform 0.3s;
+        }
 
-    .side-menu input,
-    .side-menu select {
-      width: 100%;
-      padding: 0.7em;
-      border-radius: 6px;
-      border: none;
-      background: #2e2e40;
-      color: #fff;
-      transition: all 0.3s ease;
-    }
+        .menu-btn:hover {
+            transform: scale(1.1);
+        }
 
-    .side-menu input:focus,
-    .side-menu select:focus {
-      outline: none;
-      box-shadow: 0 0 8px #e91e63;
-      background: #33334d;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
 
-    .hero {
-      padding: 3em 1em;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.5);
-    }
+        nav ul li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
 
-    .geo-headline {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-      text-shadow: 2px 2px 5px #000;
-      animation: fadeIn 1.5s ease-in-out;
-    }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+        }
 
-    .sub-headline {
-      font-size: 1.2em;
-      margin-bottom: 1.5em;
-      color: #ddd;
-    }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
 
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      gap: 0.5em;
-      margin: 1.5em 0;
-      flex-wrap: wrap;
-    }
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1001;
+            padding: 2rem;
+            overflow-y: auto;
+        }
 
-    .search-bar input {
-      padding: 0.8em;
-      border: none;
-      border-radius: 6px;
-      width: 200px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #111;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
+        .sidebar.active {
+            right: 0;
+        }
 
-    .search-bar input:focus {
-      box-shadow: 0 0 8px #e91e63;
-    }
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
 
-    .search-bar button {
-      background: #e91e63;
-      border: none;
-      padding: 0.8em 1.5em;
-      color: white;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+        .sidebar-header h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
 
-    .push-popup {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #fff;
-      border-left: 5px solid #e91e63;
-      padding: 1em;
-      width: 300px;
-      font-size: 0.9em;
-      display: none;
-      z-index: 1000;
-      color: #333;
-      border-radius: 6px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: transform 0.3s;
+        }
 
-    .push-popup img {
-      float: left;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
+        .close-btn:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
 
-    .push-popup input {
-      margin-top: 10px;
-      width: 100%;
-      padding: 0.5em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
 
-    .cta-button {
-      display: inline-block;
-      background: #e91e63;
-      color: white;
-      padding: 1em 2em;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      margin-top: 2em;
-    }
+        .search-container input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
 
-    footer {
-      background: rgba(0,0,0,0.6);
-      color: #ccc;
-      text-align: center;
-      padding: 1em;
-      font-size: 0.9em;
-    }
+        .search-container input:focus {
+            border-color: var(--primary);
+        }
 
-    @media (max-width: 600px) {
-      .search-bar {
-        flex-direction: column;
-        align-items: center;
-      }
+        .search-container button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
 
-      .hero {
-        padding: 2em 1em;
-      }
+        .sidebar-books {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
 
-      .geo-headline {
-        font-size: 1.6em;
-      }
+        .sidebar-book {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
 
-      .cta-button {
-        width: 90%;
-      }
+        .sidebar-book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
 
-      .push-popup {
-        width: 90%;
-        right: 5%;
-      }
-    }
+        .sidebar-book img {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
 
-    @media (min-width: 600px) {
-      .search-bar input {
-        width: 250px;
-      }
+        .sidebar-book-info h4 {
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+            color: var(--dark);
+        }
 
-      .search-bar button {
-        width: 200px;
-      }
-    }
-  </style>
+        .sidebar-book-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
 
-  <script type="text/javascript">
-    var qwqsy_uXb_xpzOQc = { "it": 4493399, "key": "85fdc" };
-  </script>
-  <script src="https://d2yc6hxtq0phup.cloudfront.net/6619720.js"></script>
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 60px;
+        }
 
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(255, 78, 121, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 78, 121, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 1rem;
+            scroll-margin-top: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--dark);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Features */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Books */
+        .books-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .book-cover {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .book-card:hover .book-cover img {
+            transform: scale(1.05);
+        }
+
+        .book-info {
+            padding: 1.5rem;
+        }
+
+        .book-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .book-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .read-btn {
+            display: block;
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 0.6rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .read-btn:hover {
+            background: #5a3bc2;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                transition: left 0.4s;
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 0.5rem auto;
+                max-width: 200px;
+            }
+            
+            .sidebar {
+                width: 85%;
+                right: -85%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                Woriu Dating
+            </div>
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Tips</a></li>
+                    <li><a href="#books">Books</a></li>
+                    <li><a href="#" id="searchBtn"><i class="fas fa-search"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<header>
-  <h1>Connect with Real People Near You</h1>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
-</header>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Find Dating Books</h3>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search books...">
+            <button id="sidebarSearchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="sidebar-books">
+            <div class="sidebar-book locker-trigger">
+                <img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg" alt="Dating Book">
+                <div class="sidebar-book-info">
+                    <h4>The 5 Love Languages</h4>
+                    <p>Gary Chapman</p>
+                </div>
+            </div>
+            <div class="sidebar-book locker-trigger">
+                <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg" alt="Dating Book">
+                <div class="sidebar-book-info">
+                    <h4>Attached</h4>
+                    <p>Amir Levine</p>
+                </div>
+            </div>
+            <div class="sidebar-book locker-trigger">
+                <img src="https://images.pexels.com/photos/256450/pexels-photo-256450.jpeg" alt="Dating Book">
+                <div class="sidebar-book-info">
+                    <h4>Modern Romance</h4>
+                    <p>Aziz Ansari</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Side Menu -->
-<div class="side-menu" id="sideMenu">
-  <div class="close-btn" onclick="toggleMenu()">×</div>
-  <h3>Meet Your Life Partner</h3>
-  <label for="gender">Looking for:</label>
-  <select id="gender">
-    <option value="">Select Gender</option>
-    <option>Women</option>
-    <option>Men</option>
-    <option>Both</option>
-  </select>
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Love Life</h1>
+            <p>Expert dating advice tailored for all genders and orientations</p>
+            <a href="#features" class="btn">Get Dating Tips</a>
+            <a href="#books" class="btn btn-outline">Browse Resources</a>
+        </div>
+    </section>
 
-  <label for="age">Age Range</label>
-  <input type="text" id="age" placeholder="e.g. 25-35" />
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Dating Success Strategies</h2>
+            <p>Proven techniques to help you navigate modern dating</p>
+        </div>
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>First Dates</h3>
+                <p>Make unforgettable first impressions and build instant connections</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Communication</h3>
+                <p>Master the art of meaningful conversation in relationships</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Online Safety</h3>
+                <p>Essential guidelines for safe online dating experiences</p>
+            </div>
+        </div>
+    </section>
 
-  <label for="interests">Interests</label>
-  <input type="text" id="interests" placeholder="e.g. Music, Travel" />
-</div>
+    <!-- Books -->
+    <section class="books" id="books">
+        <div class="section-title">
+            <h2>Recommended Resources</h2>
+            <p>Curated books to transform your dating approach</p>
+        </div>
+        <div class="books-container">
+            <div class="book-card locker-trigger">
+                <div class="book-cover">
+                    <img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg" alt="Dating Book">
+                </div>
+                <div class="book-info">
+                    <h3>The 5 Love Languages</h3>
+                    <p>Gary Chapman</p>
+                    <a href="#" class="read-btn">Read Sample</a>
+                </div>
+            </div>
+            <div class="book-card locker-trigger">
+                <div class="book-cover">
+                    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg" alt="Dating Book">
+                </div>
+                <div class="book-info">
+                    <h3>Attached</h3>
+                    <p>Amir Levine</p>
+                    <a href="#" class="read-btn">Read Sample</a>
+                </div>
+            </div>
+            <div class="book-card locker-trigger">
+                <div class="book-cover">
+                    <img src="https://images.pexels.com/photos/256450/pexels-photo-256450.jpeg" alt="Dating Book">
+                </div>
+                <div class="book-info">
+                    <h3>Modern Romance</h3>
+                    <p>Aziz Ansari</p>
+                    <a href="#" class="read-btn">Read Sample</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="hero">
-  <div class="geo-headline">People near <span id="cityName">[Your City]</span> are looking to connect now!</div>
-  <div class="sub-headline">Whether you're a man or woman, start meeting local singles today.</div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Woriu Dating. All rights reserved.</p>
+    </footer>
 
-  <div class="search-bar">
-    <input type="text" placeholder="Age Range (e.g. 25-35)" />
-    <input type="text" placeholder="Looking for (e.g. Women/Men)" />
-    <button>Search Now</button>
-  </div>
+    <!-- AdBluemedia Content Locker -->
+    <script type="text/javascript">
+        var okYeT_UtP_QpkXOc={"it":4493399,"key":"85fdc"};
+    </script>
+    <script src="https://d2yc6hxtq0phup.cloudfront.net/c9ecd09.js"></script>
 
-  <a href="#" class="cta-button" onclick="openLocker()">Join Free & View Profiles</a>
-</div>
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Sidebar toggle
+        const searchBtn = document.getElementById('searchBtn');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.getElementById('closeBtn');
+        const sidebarSearchBtn = document.getElementById('sidebarSearchBtn');
+        
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            _nS(); // Trigger locker
+            sidebar.classList.add('active');
+        });
+        
+        sidebarSearchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            _nS(); // Trigger locker
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+        
+        // Locker triggers for book cards and read buttons
+        document.querySelectorAll('.locker-trigger').forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                _nS(); // Trigger locker
+            });
+        });
 
-<!-- Push Popup -->
-<div class="push-popup" id="popup">
-  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Samantha">
-  <div>
-    <strong>Samantha (2 km away)</strong><br>
-    Wants to chat with you!<br>
-    <input type="text" placeholder="Enter your nearby city for better matches" />
-    <a href="#" style="color:#e91e63;text-decoration:underline;display:block;margin-top:5px;">View her profile</a>
-  </div>
-</div>
-
-<footer>
-  © 2025 LocalMatchConnect • Privacy Policy • Terms of Service
-</footer>
-
-<script>
-  document.getElementById("cityName").innerText = "New York"; // Replace with dynamic location later
-
-  // Show popup after delay
-  setTimeout(() => {
-    document.getElementById("popup").style.display = "block";
-  }, 4000);
-
-  // Toggle side menu open/close
-  function toggleMenu() {
-    const menu = document.getElementById('sideMenu');
-    menu.classList.toggle('open');
-  }
-
-  // Trigger content locker when search button is clicked
-  const searchButton = document.querySelector(".search-bar button");
-  if (searchButton) {
-    searchButton.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (typeof _ZU === "function") _ZU(); // open content locker
-    });
-  }
-
-  // Trigger content locker when "Join Free & View Profiles" button is clicked
-  function openLocker() {
-    if (typeof _ZU === "function") {
-      _ZU(); // open content locker
-    }
-  }
-
-  // Trigger content locker when user clicks popup profile link
-  const popupLink = document.querySelector("#popup a");
-  if (popupLink) {
-    popupLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (typeof _ZU === "function") _ZU(); // open content locker
-    });
-  }
-</script>
-
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('id') !== 'searchBtn') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 60,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
