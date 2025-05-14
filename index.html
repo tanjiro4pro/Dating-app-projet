@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Love Near You</title>
+  <link rel="icon" href="https://i.postimg.cc/qRCzH9g4/XIvbnasc.jpg" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+      height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 1em;
+      text-align: center;
+      position: relative;
+      z-index: 999;
+    }
+
+    .hamburger {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 1.8em;
+      cursor: pointer;
+      z-index: 1002;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background: #1e1e2f;
+      color: #fff;
+      padding: 2em 1.5em;
+      box-shadow: -5px 0 10px rgba(0,0,0,0.3);
+      transition: right 0.3s ease-in-out;
+      z-index: 1001;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #e91e63;
+    }
+
+    .side-menu h3 {
+      color: #e91e63;
+      margin-top: 30px;
+      margin-bottom: 1em;
+      font-size: 1.4em;
+    }
+
+    .side-menu label {
+      display: block;
+      margin: 1em 0 0.3em;
+      font-size: 0.9em;
+    }
+
+    .side-menu input,
+    .side-menu select {
+      width: 100%;
+      padding: 0.7em;
+      border-radius: 6px;
+      border: none;
+      background: #2e2e40;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .side-menu input:focus,
+    .side-menu select:focus {
+      outline: none;
+      box-shadow: 0 0 8px #e91e63;
+      background: #33334d;
+    }
+
+    .hero {
+      padding: 3em 1em;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .geo-headline {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      text-shadow: 2px 2px 5px #000;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .sub-headline {
+      font-size: 1.2em;
+      margin-bottom: 1.5em;
+      color: #ddd;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5em;
+      margin: 1.5em 0;
+      flex-wrap: wrap;
+    }
+
+    .search-bar input {
+      padding: 0.8em;
+      border: none;
+      border-radius: 6px;
+      width: 200px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #111;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      box-shadow: 0 0 8px #e91e63;
+    }
+
+    .search-bar button {
+      background: #e91e63;
+      border: none;
+      padding: 0.8em 1.5em;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .push-popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #fff;
+      border-left: 5px solid #e91e63;
+      padding: 1em;
+      width: 300px;
+      font-size: 0.9em;
+      display: none;
+      z-index: 1000;
+      color: #333;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .push-popup img {
+      float: left;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .push-popup input {
+      margin-top: 10px;
+      width: 100%;
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #e91e63;
+      color: white;
+      padding: 1em 2em;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 2em;
+    }
+
+    footer {
+      background: rgba(0,0,0,0.6);
+      color: #ccc;
+      text-align: center;
+      padding: 1em;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .search-bar {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero {
+        padding: 2em 1em;
+      }
+
+      .geo-headline {
+        font-size: 1.6em;
+      }
+
+      .cta-button {
+        width: 90%;
+      }
+
+      .push-popup {
+        width: 90%;
+        right: 5%;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .search-bar input {
+        width: 250px;
+      }
+
+      .search-bar button {
+        width: 200px;
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    var qwqsy_uXb_xpzOQc = { "it": 4493399, "key": "85fdc" };
+  </script>
+  <script src="https://d2yc6hxtq0phup.cloudfront.net/6619720.js"></script>
+
+</head>
+<body>
+
+<header>
+  <h1>Connect with Real People Near You</h1>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- Side Menu -->
+<div class="side-menu" id="sideMenu">
+  <div class="close-btn" onclick="toggleMenu()">×</div>
+  <h3>Meet Your Life Partner</h3>
+  <label for="gender">Looking for:</label>
+  <select id="gender">
+    <option value="">Select Gender</option>
+    <option>Women</option>
+    <option>Men</option>
+    <option>Both</option>
+  </select>
+
+  <label for="age">Age Range</label>
+  <input type="text" id="age" placeholder="e.g. 25-35" />
+
+  <label for="interests">Interests</label>
+  <input type="text" id="interests" placeholder="e.g. Music, Travel" />
+</div>
+
+<div class="hero">
+  <div class="geo-headline">People near <span id="cityName">[Your City]</span> are looking to connect now!</div>
+  <div class="sub-headline">Whether you're a man or woman, start meeting local singles today.</div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Age Range (e.g. 25-35)" />
+    <input type="text" placeholder="Looking for (e.g. Women/Men)" />
+    <button>Search Now</button>
+  </div>
+
+  <a href="#" class="cta-button" onclick="openLocker()">Join Free & View Profiles</a>
+</div>
+
+<!-- Push Popup -->
+<div class="push-popup" id="popup">
+  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Samantha">
+  <div>
+    <strong>Samantha (2 km away)</strong><br>
+    Wants to chat with you!<br>
+    <input type="text" placeholder="Enter your nearby city for better matches" />
+    <a href="#" style="color:#e91e63;text-decoration:underline;display:block;margin-top:5px;">View her profile</a>
+  </div>
+</div>
+
+<footer>
+  © 2025 LocalMatchConnect • Privacy Policy • Terms of Service
+</footer>
+
+<script>
+  document.getElementById("cityName").innerText = "New York"; // Replace with dynamic location later
+
+  // Show popup after delay
+  setTimeout(() => {
+    document.getElementById("popup").style.display = "block";
+  }, 4000);
+
+  // Toggle side menu open/close
+  function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    menu.classList.toggle('open');
+  }
+
+  // Trigger content locker when search button is clicked
+  const searchButton = document.querySelector(".search-bar button");
+  if (searchButton) {
+    searchButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (typeof _ZU === "function") _ZU(); // open content locker
+    });
+  }
+
+  // Trigger content locker when "Join Free & View Profiles" button is clicked
+  function openLocker() {
+    if (typeof _ZU === "function") {
+      _ZU(); // open content locker
+    }
+  }
+
+  // Trigger content locker when user clicks popup profile link
+  const popupLink = document.querySelector("#popup a");
+  if (popupLink) {
+    popupLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (typeof _ZU === "function") _ZU(); // open content locker
+    });
+  }
+</script>
+
+</body>
+</html>
