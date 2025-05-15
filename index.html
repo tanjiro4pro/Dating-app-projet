@@ -3,499 +3,880 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Woriu Dating | Modern Dating Advice</title>
+    <title>Pure Beard Care - Grooming Beard For Men</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Global Styles */
         :root {
-            --primary: #FF4E79;
-            --secondary: #6A45D8;
-            --accent: #FFB347;
-            --dark: #2D3047;
-            --light: #F9F9F9;
+            --primary: #3a2c1d;
+            --secondary: #d4a76a;
+            --accent: #8b5a2b;
+            --light: #f5f5f5;
+            --dark: #1a1a1a;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            background-color: var(--light);
-            color: #333;
-            line-height: 1.6;
+            background-color: #f9f5f0;
+            color: var(--dark);
             overflow-x: hidden;
+            position: relative;
         }
-
-        /* Header */
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-color: var(--primary);
             color: white;
-            padding: 1rem;
+            padding: 20px 0;
             position: fixed;
             width: 100%;
-            top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-
+        
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
         }
-
+        
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            text-decoration: none;
             display: flex;
             align-items: center;
         }
-
+        
         .logo i {
-            color: var(--accent);
             margin-right: 10px;
-            font-size: 1.3rem;
         }
-
-        .menu-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: none;
-            transition: transform 0.3s;
-        }
-
-        .menu-btn:hover {
-            transform: scale(1.1);
-        }
-
+        
         nav ul {
             display: flex;
             list-style: none;
         }
-
+        
         nav ul li {
-            margin-left: 1.5rem;
-            position: relative;
+            margin-left: 30px;
         }
-
+        
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
-            padding: 0.5rem 0;
+            transition: color 0.3s;
+            position: relative;
         }
-
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
             transition: width 0.3s;
         }
-
+        
         nav ul li a:hover::after {
             width: 100%;
         }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -350px;
-            width: 350px;
-            height: 100%;
-            background: white;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 1001;
-            padding: 2rem;
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            right: 0;
-        }
-
-        .sidebar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .sidebar-header h3 {
-            font-size: 1.5rem;
-            color: var(--dark);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
+        
+        .menu-toggle {
+            display: none;
             cursor: pointer;
-            color: var(--dark);
-            transition: transform 0.3s;
+            font-size: 24px;
         }
-
-        .close-btn:hover {
-            transform: rotate(90deg);
-            color: var(--primary);
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #eee;
-            border-radius: 30px;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .search-container input:focus {
-            border-color: var(--primary);
-        }
-
-        .search-container button {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--primary);
-            cursor: pointer;
-        }
-
-        .sidebar-books {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .sidebar-book {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            border-radius: 8px;
-            background: #fafafa;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .sidebar-book:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: white;
-        }
-
-        .sidebar-book img {
-            width: 60px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-right: 1rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .sidebar-book-info h4 {
-            margin-bottom: 0.3rem;
-            font-size: 1rem;
-            color: var(--dark);
-        }
-
-        .sidebar-book-info p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Hero */
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg') center/cover;
+            background: linear-gradient(rgba(58, 44, 29, 0.8), rgba(58, 44, 29, 0.8)), 
+                        url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
             height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
-            padding-top: 60px;
+            padding-top: 80px;
         }
-
+        
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 1rem;
-            animation: fadeIn 1s ease-out;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.3;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
         }
-
+        
         .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease;
         }
-
+        
         .btn {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            margin: 0 0.5rem;
-            transition: all 0.3s;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(255, 78, 121, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 78, 121, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: white;
+            background-color: var(--secondary);
             color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            animation: fadeInUp 1.4s ease;
         }
-
-        /* Sections */
-        section {
-            padding: 5rem 1rem;
-            scroll-margin-top: 60px;
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-
+        
+        /* Giveaway Notice */
+        .giveaway-notice {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 30px;
+            text-align: center;
+            margin: 50px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(139, 90, 43, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        
+        .giveaway-notice h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .giveaway-notice p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .giveaway-notice::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed var(--primary);
+            border-radius: 15px;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: url('https://images.unsplash.com/photo-1596704017256-17961b64540f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(249, 245, 240, 0.9);
+        }
+        
+        .products .container {
+            position: relative;
+            z-index: 1;
+        }
+        
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 50px;
             position: relative;
-            display: inline-block;
-            color: var(--dark);
         }
-
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            position: relative;
+        }
+        
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
+            width: 70%;
             height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 15%;
         }
-
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Features */
-        .features-container {
+        
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
         }
-
-        .feature-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-        }
-
-        .feature-card p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* Books */
-        .books-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .book-card {
-            background: white;
+        
+        .product-card {
+            background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
-
-        .book-cover {
-            height: 300px;
+        
+        .product-img {
+            height: 250px;
             overflow: hidden;
         }
-
-        .book-cover img {
+        
+        .product-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
-
-        .book-card:hover .book-cover img {
-            transform: scale(1.05);
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
         }
-
-        .book-info {
-            padding: 1.5rem;
+        
+        .product-info {
+            padding: 20px;
         }
-
-        .book-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
         }
-
-        .book-info p {
+        
+        .product-info p {
             color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
-
-        .read-btn {
-            display: block;
-            background: var(--secondary);
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+        
+        /* Tips Section */
+        .tips {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tip-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-card h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .tip-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 80px 0;
+            background: url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: relative;
             color: white;
-            text-align: center;
-            padding: 0.6rem;
+        }
+        
+        .reviews::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(58, 44, 29, 0.9);
+        }
+        
+        .reviews .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reviews .section-title h2 {
+            color: white;
+        }
+        
+        .reviews .section-title h2::after {
+            background-color: var(--secondary);
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .review-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid var(--secondary);
+        }
+        
+        .review-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .review-stars {
+            color: var(--secondary);
+        }
+        
+        .review-text {
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background-color: #2a2118;
+        }
+        
+        .accordion-header h3 {
+            font-size: 1.1rem;
+        }
+        
+        .accordion-content {
+            background-color: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        
+        .accordion-content-inner {
+            padding: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .accordion-item.active .accordion-header {
+            background-color: var(--accent);
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 0;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: all 0.3s;
+            font-size: 1rem;
+            transition: border-color 0.3s;
         }
-
-        .read-btn:hover {
-            background: #5a3bc2;
-            transform: translateY(-2px);
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
         }
-
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
         /* Footer */
         footer {
-            background: var(--dark);
+            background-color: var(--primary);
             color: white;
-            padding: 3rem 1rem;
-            text-align: center;
+            padding: 50px 0 20px;
         }
-
-        /* Responsive */
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Search Panel */
+        .search-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .search-panel.active {
+            right: 0;
+        }
+        
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .search-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .close-search {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .close-search:hover {
+            color: var(--primary);
+        }
+        
+        .search-form {
+            margin-bottom: 30px;
+        }
+        
+        .search-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            padding-left: 45px;
+            background: url('https://cdn-icons-png.flaticon.com/512/149/149852.png') no-repeat 15px center;
+            background-size: 20px;
+        }
+        
+        .search-form input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .search-results h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .search-result-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-result-item h5 {
+            margin-bottom: 5px;
+        }
+        
+        .search-result-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .search-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Text Effects */
+        .text-effect {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .text-effect::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .text-effect:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        .char {
+            display: inline-block;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .char:hover {
+            transform: translateY(-5px);
+            color: var(--secondary);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .giveaway-notice h2 {
+                font-size: 2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .menu-btn {
+            .menu-toggle {
                 display: block;
             }
             
-            nav ul {
+            nav {
                 position: fixed;
-                top: 60px;
+                top: 80px;
                 left: -100%;
-                width: 100%;
-                background: var(--dark);
-                flex-direction: column;
-                align-items: center;
-                padding: 1rem 0;
-                transition: left 0.4s;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                transition: left 0.3s ease;
+                padding: 30px;
                 z-index: 999;
             }
             
-            nav ul.active {
+            nav.active {
                 left: 0;
             }
             
-            nav ul li {
-                margin: 1rem 0;
+            nav ul {
+                flex-direction: column;
             }
             
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .giveaway-notice h2 {
+                font-size: 1.8rem;
+            }
+            
+            .search-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .btn {
-                display: block;
-                margin: 0.5rem auto;
-                max-width: 200px;
+            .hero p {
+                font-size: 1rem;
             }
             
-            .sidebar {
-                width: 85%;
-                right: -85%;
+            .giveaway-notice h2 {
+                font-size: 1.5rem;
+            }
+            
+            .giveaway-notice p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -503,138 +884,340 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <i class="fas fa-heart"></i>
-                Woriu Dating
-            </div>
-            <button class="menu-btn" id="menuBtn">
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-cut"></i> Pure Beard Care</a>
+            <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
-            </button>
+            </div>
             <nav>
-                <ul id="navMenu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Tips</a></li>
-                    <li><a href="#books">Books</a></li>
-                    <li><a href="#" id="searchBtn"><i class="fas fa-search"></i></a></li>
+                <ul>
+                    <li><a href="#" class="text-effect">Home</a></li>
+                    <li><a href="#products" class="text-effect">Products</a></li>
+                    <li><a href="#tips" class="text-effect">Tips</a></li>
+                    <li><a href="#reviews" class="text-effect">Reviews</a></li>
+                    <li><a href="#faq" class="text-effect">FAQ</a></li>
+                    <li><a href="#contact" class="text-effect">Contact</a></li>
+                    <li><a href="#" id="search-btn" class="text-effect"><i class="fas fa-search"></i></a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h3>Find Dating Books</h3>
-            <button class="close-btn" id="closeBtn">
-                <i class="fas fa-times"></i>
-            </button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="animated-heading">Premium <span class="char">B</span><span class="char">e</span><span class="char">a</span><span class="char">r</span><span class="char">d</span> Care for <span class="char">M</span><span class="char">e</span><span class="char">n</span></h1>
+            <p>Discover our premium collection of beard care products designed to keep your beard healthy, soft, and perfectly groomed.</p>
+            <a href="#products" class="btn" onclick="event.preventDefault(); _aj();">Shop Now</a>
         </div>
-        <div class="search-container">
-            <input type="text" placeholder="Search books...">
-            <button id="sidebarSearchBtn"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="sidebar-books">
-            <div class="sidebar-book locker-trigger">
-                <img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg" alt="Dating Book">
-                <div class="sidebar-book-info">
-                    <h4>The 5 Love Languages</h4>
-                    <p>Gary Chapman</p>
-                </div>
-            </div>
-            <div class="sidebar-book locker-trigger">
-                <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg" alt="Dating Book">
-                <div class="sidebar-book-info">
-                    <h4>Attached</h4>
-                    <p>Amir Levine</p>
-                </div>
-            </div>
-            <div class="sidebar-book locker-trigger">
-                <img src="https://images.pexels.com/photos/256450/pexels-photo-256450.jpeg" alt="Dating Book">
-                <div class="sidebar-book-info">
-                    <h4>Modern Romance</h4>
-                    <p>Aziz Ansari</p>
-                </div>
-            </div>
+    </section>
+
+    <!-- Giveaway Notice -->
+    <div class="container">
+        <div class="giveaway-notice">
+            <h2>ENTER THE GIVEAWAY</h2>
+            <p>Win our complete beard care package worth $199! Includes beard oil, balm, shampoo, conditioner, and grooming tools.</p>
+            <a href="#" class="btn" onclick="event.preventDefault(); _aj();">Enter Now</a>
         </div>
     </div>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Transform Your Love Life</h1>
-            <p>Expert dating advice tailored for all genders and orientations</p>
-            <a href="#features" class="btn">Get Dating Tips</a>
-            <a href="#books" class="btn btn-outline">Browse Resources</a>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Products</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.postimg.cc/Jnv4PNpv/Woodsman-Beard-Oil-by-asouthernapothecary-on-Etsy.jpg" alt="Beard Oil">
+                    </div>
+                    <div class="product-info">
+                        <h3>Beard Oil - Woodsman</h3>
+                        <p>Nourishing blend of argan and jojoba oils with a masculine woodsy scent.</p>
+                        <div class="product-price">
+                            <span class="price">$24.99</span>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.postimg.cc/SKtyxLbR/Sevich-Beard-Balm-Organic-Smooth-60g-Brand.jpg" alt="Beard Balm">
+                    </div>
+                    <div class="product-info">
+                        <h3>Beard Balm - Classic</h3>
+                        <p>Provides hold and conditioning with shea butter and beeswax for a perfect beard day.</p>
+                        <div class="product-price">
+                            <span class="price">$19.99</span>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.postimg.cc/zvwZKK6n/Eigens-f-r-die-t-gliche-Bartpflege-entwickelt.jpg" alt="Beard Shampoo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Beard Shampoo - Fresh Mint</h3>
+                        <p>Gentle cleansing formula that won't strip natural oils, leaving your beard fresh and clean.</p>
+                        <div class="product-price">
+                            <span class="price">$16.99</span>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.postimg.cc/s28rrV5Z/PRICES-MAY-VARY-Hair-Combs-Set-This-set-includes.jpg" alt="Beard Comb">
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Beard Comb</h3>
+                        <p>Handcrafted wooden comb that detangles without static or breakage.</p>
+                        <div class="product-price">
+                            <span class="price">$14.99</span>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features" id="features">
-        <div class="section-title">
-            <h2>Dating Success Strategies</h2>
-            <p>Proven techniques to help you navigate modern dating</p>
-        </div>
-        <div class="features-container">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <h3>First Dates</h3>
-                <p>Make unforgettable first impressions and build instant connections</p>
+    <!-- Tips Section -->
+    <section class="tips" id="tips">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beard Care Tips</h2>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-comments"></i>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><i class="fas fa-oil-can"></i> Oil Regularly</h3>
+                    <p>Apply beard oil daily to keep your beard moisturized and prevent itchiness. Focus on the skin beneath your beard to prevent dryness and dandruff.</p>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read More</a>
                 </div>
-                <h3>Communication</h3>
-                <p>Master the art of meaningful conversation in relationships</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-lock"></i>
+                <div class="tip-card">
+                    <h3><i class="fas fa-shower"></i> Wash Properly</h3>
+                    <p>Use a beard-specific shampoo 2-3 times per week. Regular shampoo can strip natural oils, leaving your beard dry and brittle.</p>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read More</a>
                 </div>
-                <h3>Online Safety</h3>
-                <p>Essential guidelines for safe online dating experiences</p>
+                <div class="tip-card">
+                    <h3><i class="fas fa-cut"></i> Trim Regularly</h3>
+                    <p>Even if growing your beard out, regular trims help maintain shape and remove split ends. Invest in quality scissors or visit a professional.</p>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read More</a>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-utensils"></i> Eat Right</h3>
+                    <p>A diet rich in proteins, vitamins (especially biotin), and omega-3 fatty acids promotes healthy beard growth from the inside out.</p>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read More</a>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-brush"></i> Brush Daily</h3>
+                    <p>Use a boar bristle brush to distribute oils evenly, exfoliate the skin, and train your beard to grow in the desired direction.</p>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read More</a>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-bed"></i> Sleep Well</h3>
+                    <p>Growth hormones are released during sleep. Aim for 7-8 hours per night to maximize your beard's growth potential.</p>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read More</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Books -->
-    <section class="books" id="books">
-        <div class="section-title">
-            <h2>Recommended Resources</h2>
-            <p>Curated books to transform your dating approach</p>
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+            </div>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D.">
+                        </div>
+                        <div class="review-info">
+                            <h4>John D.</h4>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "The Woodsman beard oil completely transformed my beard. No more itchiness and my wife loves the scent. Worth every penny!"
+                    </div>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read Full Review</a>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-img">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T.">
+                        </div>
+                        <div class="review-info">
+                            <h4>Michael T.</h4>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "I've tried many beard balms, but none compare to BeardMasters. Perfect hold without being sticky or greasy. My beard has never looked better."
+                    </div>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read Full Review</a>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-img">
+                            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Robert G.">
+                        </div>
+                        <div class="review-info">
+                            <h4>Robert G.</h4>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "The beard shampoo leaves my beard feeling clean but not dried out. The mint scent is refreshing and wakes me up in the morning."
+                    </div>
+                    <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Read Full Review</a>
+                </div>
+            </div>
         </div>
-        <div class="books-container">
-            <div class="book-card locker-trigger">
-                <div class="book-cover">
-                    <img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg" alt="Dating Book">
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>How often should I use beard oil?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>For best results, apply beard oil daily, especially after showering when your pores are open and can absorb the oil more effectively. If you live in a dry climate or have particularly coarse beard hair, you may benefit from applying oil twice per day.</p>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Learn More</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="book-info">
-                    <h3>The 5 Love Languages</h3>
-                    <p>Gary Chapman</p>
-                    <a href="#" class="read-btn">Read Sample</a>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>What's the difference between beard oil and beard balm?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Beard oil is primarily for conditioning and moisturizing both your beard and the skin beneath. Beard balm contains similar conditioning ingredients but also includes beeswax and butter which provide light to medium hold, helping to style and tame your beard while still conditioning it.</p>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>How can I make my beard grow faster?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>While genetics largely determine your beard growth potential, you can maximize it by: maintaining a healthy diet rich in proteins and vitamins, exercising regularly, getting enough sleep, reducing stress, keeping your skin clean and exfoliated, and using quality beard products to maintain healthy hair follicles.</p>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>How do I deal with beard itch?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Beard itch is often caused by dry skin beneath your beard. Combat it by washing with a gentle beard shampoo (not regular shampoo), applying beard oil daily to moisturize, brushing regularly to exfoliate, and drinking plenty of water. The itch typically subsides after the first few weeks of growth as your skin adjusts.</p>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Are your products cruelty-free and vegan?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Yes! All BeardMasters products are cruelty-free and most are vegan (except for our Classic Beard Balm which contains beeswax). We never test on animals and source our ingredients ethically and sustainably.</p>
+                            <a href="#" class="btn" onclick="event.preventDefault(); _aj();" style="margin-top: 15px; display: inline-block;">Learn More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="book-card locker-trigger">
-                <div class="book-cover">
-                    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg" alt="Dating Book">
-                </div>
-                <div class="book-info">
-                    <h3>Attached</h3>
-                    <p>Amir Levine</p>
-                    <a href="#" class="read-btn">Read Sample</a>
-                </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
             </div>
-            <div class="book-card locker-trigger">
-                <div class="book-cover">
-                    <img src="https://images.pexels.com/photos/256450/pexels-photo-256450.jpeg" alt="Dating Book">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Beard Street, Groomington, BRD 12345</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@purebeardcare.com</span>
+                        </div>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9am - 6pm<br>
+                    Saturday: 10am - 4pm<br>
+                    Sunday: Closed</p>
                 </div>
-                <div class="book-info">
-                    <h3>Modern Romance</h3>
-                    <p>Aziz Ansari</p>
-                    <a href="#" class="read-btn">Read Sample</a>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" onclick="event.preventDefault(); _aj();">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -642,74 +1225,215 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Woriu Dating. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Pure Beard Care</h3>
+                    <p>Premium beard care products crafted with natural ingredients to help you grow, groom, and maintain the perfect beard.</p>
+                    <div class="social-links">
+                        <a href="#" onclick="event.preventDefault(); _aj();"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" onclick="event.preventDefault(); _aj();"><i class="fab fa-twitter"></i></a>
+                        <a href="#" onclick="event.preventDefault(); _aj();"><i class="fab fa-instagram"></i></a>
+                        <a href="#" onclick="event.preventDefault(); _aj();"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Home</a></li>
+                        <li><a href="#products" onclick="event.preventDefault(); _aj();">Products</a></li>
+                        <li><a href="#tips" onclick="event.preventDefault(); _aj();">Tips</a></li>
+                        <li><a href="#reviews" onclick="event.preventDefault(); _aj();">Reviews</a></li>
+                        <li><a href="#faq" onclick="event.preventDefault(); _aj();">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Beard Oils</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Beard Balms</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Beard Shampoos</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Beard Combs & Brushes</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Gift Sets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Contact Us</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Shipping Policy</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Returns & Exchanges</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Privacy Policy</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); _aj();">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Pure Beard Care. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- AdBluemedia Content Locker -->
+    <!-- Search Panel -->
+    <div class="search-overlay"></div>
+    <div class="search-panel">
+        <div class="search-header">
+            <h3>Search Products</h3>
+            <button class="close-search"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="search-form">
+            <input type="text" placeholder="Search for beard oils, balms, kits..." onclick="_aj();">
+        </div>
+        <div class="search-results">
+            <h4>Popular Searches</h4>
+            <div class="search-result-item">
+                <h5>Beard Oil</h5>
+                <p>Nourishing oils for beard growth and health</p>
+                <a href="#" onclick="event.preventDefault(); _aj();" style="color: var(--secondary); font-weight: bold; display: inline-block; margin-top: 5px;">View Products</a>
+            </div>
+            <div class="search-result-item">
+                <h5>Beard Balm</h5>
+                <p>Conditioning and styling for your beard</p>
+                <a href="#" onclick="event.preventDefault(); _aj();" style="color: var(--secondary); font-weight: bold; display: inline-block; margin-top: 5px;">View Products</a>
+            </div>
+            <div class="search-result-item">
+                <h5>Beard Shampoo</h5>
+                <p>Specialized cleansers for facial hair</p>
+                <a href="#" onclick="event.preventDefault(); _aj();" style="color: var(--secondary); font-weight: bold; display: inline-block; margin-top: 5px;">View Products</a>
+            </div>
+            <div class="search-result-item">
+                <h5>Gift Sets</h5>
+                <p>Perfect presents for the bearded man</p>
+                <a href="#" onclick="event.preventDefault(); _aj();" style="color: var(--secondary); font-weight: bold; display: inline-block; margin-top: 5px;">View Products</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Locker Script -->
     <script type="text/javascript">
-        var okYeT_UtP_QpkXOc={"it":4493399,"key":"85fdc"};
+        var iLcqB_fBX_GezLOc={"it":4495520,"key":"b5493"};
     </script>
-    <script src="https://d2yc6hxtq0phup.cloudfront.net/c9ecd09.js"></script>
+    <script src="https://d2v7l2267atlz5.cloudfront.net/4c96d4d.js"></script>
 
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const navMenu = document.getElementById('navMenu');
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
         
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuToggle.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
-        // Sidebar toggle
-        const searchBtn = document.getElementById('searchBtn');
-        const sidebar = document.getElementById('sidebar');
-        const closeBtn = document.getElementById('closeBtn');
-        const sidebarSearchBtn = document.getElementById('sidebarSearchBtn');
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(link.id !== 'search-btn') {
+                    e.preventDefault();
+                    _aj();
+                }
+                nav.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Search Panel Toggle
+        const searchBtn = document.getElementById('search-btn');
+        const searchPanel = document.querySelector('.search-panel');
+        const searchOverlay = document.querySelector('.search-overlay');
+        const closeSearch = document.querySelector('.close-search');
         
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            _nS(); // Trigger locker
-            sidebar.classList.add('active');
+            _aj();
+            searchPanel.classList.add('active');
+            searchOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
         
-        sidebarSearchBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            _nS(); // Trigger locker
+        closeSearch.addEventListener('click', () => {
+            searchPanel.classList.remove('active');
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
         
-        closeBtn.addEventListener('click', () => {
-            sidebar.classList.remove('active');
+        searchOverlay.addEventListener('click', () => {
+            searchPanel.classList.remove('active');
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
         
-        // Locker triggers for book cards and read buttons
-        document.querySelectorAll('.locker-trigger').forEach(element => {
-            element.addEventListener('click', function(e) {
-                e.preventDefault();
-                _nS(); // Trigger locker
+        // Accordion Functionality
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            header.addEventListener('click', () => {
+                const currentlyActive = document.querySelector('.accordion-item.active');
+                
+                if(currentlyActive && currentlyActive !== item) {
+                    currentlyActive.classList.remove('active');
+                    currentlyActive.querySelector('.accordion-header i').className = 'fas fa-plus';
+                }
+                
+                item.classList.toggle('active');
+                
+                const icon = item.querySelector('.accordion-header i');
+                icon.className = item.classList.contains('active') ? 
+                    'fas fa-minus' : 'fas fa-plus';
             });
         });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
+        
+        // Animate characters on hover
+        const chars = document.querySelectorAll('.char');
+        chars.forEach(char => {
+            char.addEventListener('mouseover', () => {
+                char.style.transform = 'translateY(-5px)';
+                char.style.color = '#d4a76a';
+            });
+            char.addEventListener('mouseout', () => {
+                char.style.transform = '';
+                char.style.color = '';
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            _aj();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                if(this.getAttribute('id') !== 'searchBtn') {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 60,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        navMenu.classList.remove('active');
-                    }
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
+        
+        // Animate heading on load
+        const animatedHeading = document.getElementById('animated-heading');
+        const headingText = animatedHeading.textContent;
+        animatedHeading.innerHTML = '';
+        
+        for(let i = 0; i < headingText.length; i++) {
+            const span = document.createElement('span');
+            span.className = 'char';
+            span.textContent = headingText[i];
+            span.style.animationDelay = `${i * 0.1}s`;
+            animatedHeading.appendChild(span);
+        }
     </script>
 </body>
 </html>
