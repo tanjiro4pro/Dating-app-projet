@@ -1,0 +1,285 @@
+/* Custom Styles for Enhanced Security Features */
+
+/* Trust Indicators */
+.security-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.security-indicator i {
+    color: #48bb78;
+    font-size: 1.25rem;
+}
+
+/* Enhanced Card Animations */
+.card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Security Badge Styles */
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: #2d3748;
+    margin: 4px;
+}
+
+.security-badge i {
+    margin-right: 8px;
+    color: #4299e1;
+}
+
+/* Secure Transaction Indicator */
+.secure-transaction {
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+    color: #2f855a;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* SSL Certificate Display */
+.ssl-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: #2d3748;
+    z-index: 1000;
+}
+
+.ssl-indicator i {
+    color: #48bb78;
+}
+
+/* Trust Seal Animation */
+.trust-seal {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Enhanced Form Security Styles */
+.secure-input {
+    border: 2px solid #e2e8f0;
+    transition: border-color 0.3s ease;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.secure-input:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Verification Badge */
+.verified-badge {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Security Feature Cards */
+.security-feature-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.security-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Trust Icons */
+.trust-icon {
+    width: 48px;
+    height: 48px;
+    background: #f7fafc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.trust-icon i {
+    font-size: 24px;
+    color: #4299e1;
+}
+
+/* Secure Payment Methods */
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: #f7fafc;
+    border-radius: 6px;
+    margin: 4px 0;
+}
+
+.payment-method img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Enhanced Loading States */
+.secure-loading {
+    position: relative;
+    padding-left: 24px;
+}
+
+.secure-loading::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e2e8f0;
+    border-top-color: #4299e1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Security Progress Indicator */
+.security-progress {
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.security-progress-bar {
+    height: 100%;
+    background: #48bb78;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Enhanced Tooltip Styles */
+.security-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.security-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background: #2d3748;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.security-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Verification Steps */
+.verification-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #f7fafc;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.verification-step-number {
+    width: 24px;
+    height: 24px;
+    background: #4299e1;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Security Alert Styles */
+.security-alert {
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    color: #c53030;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.security-alert i {
+    font-size: 1.25rem;
+}
